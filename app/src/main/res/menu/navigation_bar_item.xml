@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_graph"
-        android:title="Graph"
-        android:icon="@android:drawable/ic_menu_sort_by_size"/>
+        android:id="@+id/nav_home"
+        android:title="HOME"
+        android:enabled="true"
+        android:checked="true"
+        android:icon="@drawable/ic_home"
+        />
     <item
         android:id="@+id/nav_todo"
-        android:title="Todo"
+        android:title=""
+        android:enabled="true"
         android:icon="@drawable/ic_check_todo"/>
     <item
         android:id="@+id/nav_timer"
-        android:title="Timer"
+        android:title=""
+        android:enabled="true"
         android:icon="@drawable/ic_timer"/>
-
+    <item
+        android:id="@+id/nav_graph"
+        android:title=""
+        android:enabled="true"
+        android:icon="@android:drawable/ic_menu_sort_by_size"/>
 </menu>
