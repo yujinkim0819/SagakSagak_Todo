@@ -19,14 +19,32 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
-            card_view:cardCornerRadius="30dp">
+            card_view:cardCornerRadius="30dp"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="안녕하세요" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            card_view:cardCornerRadius="30dp"
+            android:layout_margin="20dp">
 
             <TextView
                 android:layout_width="wrap_content"

@@ -25,19 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
         mBottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_home) + "</font>"));
-        getSupportFragmentManager().beginTransaction().add(R.id.frame_container, new HomeActivity()).commit();
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_todo) + "</font>"));
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_container, new TodoActivity()).commit();
 
         mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()){
-                    case R.id.nav_home :
-                        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_home) + "</font>"));
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new HomeActivity()).commit(); break;
-                    case R.id.nav_graph :
-                        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_graph) + "</font>"));
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new GraphActivity()).commit(); break;
+                    case R.id.nav_calender :
+                        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_calender) + "</font>"));
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new CalenderActivity()).commit(); break;
                     case R.id.nav_timer :
                         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_timer) + "</font>"));
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new TimerActivity()).commit(); break;
