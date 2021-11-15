@@ -1,18 +1,22 @@
 package com.cookandroid.sagaksagaktodo;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-//각 프레그먼트의 action bar text변경
-//action bar크기 변경
-//bottom navigation check, uncheck 색깔변경
-//bottom navigation item 1개더 추가(HOME)
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Main_Activity";
@@ -26,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         mBottomNavigationView = findViewById(R.id.bottom_navigation);
 
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_todo) + "</font>"));
-        getSupportFragmentManager().beginTransaction().add(R.id.frame_container, new TodoActivity()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new TodoMainFragment()).commit();
 
         mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -34,13 +38,13 @@ public class MainActivity extends AppCompatActivity {
                 switch(item.getItemId()){
                     case R.id.nav_calender :
                         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_calender) + "</font>"));
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new CalenderActivity()).commit(); break;
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalenderActivity()).commit(); break;
                     case R.id.nav_timer :
                         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_timer) + "</font>"));
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new TimerActivity()).commit(); break;
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TimerActivity()).commit(); break;
                     case R.id.nav_todo :
                         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"black\">" + getString(R.string.title_todo) + "</font>"));
-                        getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new TodoActivity()).commit(); break;
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TodoMainFragment()).commit(); break;
                 }
                 return true;
             }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <EditText
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:inputType="textMultiLine"
+                android:hint="할 일을 입력하세요."
+                android:textColor="@color/black"
+                android:background="@color/bg_gray"
+                android:gravity="center|left"
+                android:textSize="15sp"
+                android:padding="5dp"
+                android:ems="10"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                android:id="@+id/inputToDo"
+                android:privateImeOptions="defaultInputmode=korean"/>
+
+            <Button
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="9"
+                android:id="@+id/saveButton"
+                app:backgroundTint="@color/colorPrimaryDark"
+                android:text="저장"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/container"/>
+    </LinearLayout>
+</LinearLayout>

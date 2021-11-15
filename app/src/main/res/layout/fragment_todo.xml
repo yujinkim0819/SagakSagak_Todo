@@ -1,39 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/inputTodo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="할 일을 입력하세요."
-            android:inputType="textMultiLine"/>
+        android:id="@+id/refresh_layout">
 
-        <Button
-            android:id="@+id/save_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:text="저장"
-            app:backgroundTint="?android:attr/colorActivatedHighlight"/>
-    </LinearLayout>
-    <FrameLayout
-        android:id="@+id/framelayout_container"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="685dp">
+        android:id="@+id/recyclerView"/>
 
-    </FrameLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </LinearLayout>
