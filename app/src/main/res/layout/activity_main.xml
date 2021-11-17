@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:labelVisibilityMode="unlabeled"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:backgroundTint="@color/bg_gray">
 
     <FrameLayout
-        android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation">
-    </FrameLayout>
+        android:id="@+id/fragment_container"
+        android:layout_marginBottom="80dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -28,6 +27,5 @@
         app:labelVisibilityMode="unlabeled"
         app:itemIconSize="30dp"
         />
-
 
 </RelativeLayout>
