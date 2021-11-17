@@ -48,7 +48,6 @@ public class TimerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup containers, @Nullable Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.activity_timer, containers, false);
 
         countdownText = view.findViewById(R.id.countdown_text);
