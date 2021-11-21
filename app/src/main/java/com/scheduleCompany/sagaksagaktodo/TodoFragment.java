@@ -1,10 +1,9 @@
 
-package com.cookandroid.sagaksagaktodo;
+package com.scheduleCompany.sagaksagaktodo;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,7 @@ public class TodoFragment extends Fragment {
     private static final String TAG = "MainFragment";
 
     RecyclerView recyclerView;
-    NoteAdapter adapter;
+    TodoAdapter adapter;
     Context context;
 
     SwipeRefreshLayout swipeRefreshLayout;
@@ -69,7 +68,7 @@ public class TodoFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
 
         //어댑터 연결결
-        adapter = new NoteAdapter();
+        adapter = new TodoAdapter();
         recyclerView.setAdapter(adapter);
 
     }
@@ -77,10 +76,10 @@ public class TodoFragment extends Fragment {
     public int loadNoteListData(){
 
         //데이터를 가져오는 sql문 select... (id의 역순으로 정렬)
-        String loadSql = "select _id, TODO from " + NoteDatabase.TABLE_NOTE + " order by _id desc";
+        String loadSql = "select _id, TODO from " + TodoDatabase.TABLE_Todo + " order by _id desc";
 
         int recordCount = -1;
-        NoteDatabase database = NoteDatabase.getInstance(context);
+        TodoDatabase database = TodoDatabase.getInstance(context);
 
         if(database != null){
             //cursor를 객체화하여 rawQuery문 저장
@@ -89,7 +88,7 @@ public class TodoFragment extends Fragment {
             recordCount = outCursor.getCount();
 
             //_id, TODO가 담겨질 배열 생성
-            ArrayList<Note> items = new ArrayList<>();
+            ArrayList<TodoData> items = new ArrayList<>();
 
             //for문을 통해 하나하나 추가
             for(int i = 0; i < recordCount; i++){
@@ -97,7 +96,7 @@ public class TodoFragment extends Fragment {
 
                 int _id = outCursor.getInt(0);
                 String todo = outCursor.getString(1);
-                items.add(new Note(_id,todo));
+                items.add(new TodoData(_id,todo));
             }
             outCursor.close();
 

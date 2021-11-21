@@ -1,7 +1,6 @@
-package com.cookandroid.sagaksagaktodo;
+package com.scheduleCompany.sagaksagaktodo;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
+public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> {
     private static final String TAG = "NoteAdapter";
 
     //todolist아이템이 들어갈 배열
-    ArrayList<Note> items = new ArrayList<>();
+    ArrayList<TodoData> items = new ArrayList<>();
 
 
 
     //todo_item.xml을 인플레이션
     @NonNull
     @Override
-    public NoteAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TodoAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View itemView = inflater.inflate(R.layout.todo_item, parent, false);
 
@@ -35,8 +34,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NoteAdapter.ViewHolder holder, int position) {
-        Note item = items.get(position);
+    public void onBindViewHolder(@NonNull TodoAdapter.ViewHolder holder, int position) {
+        TodoData item = items.get(position);
         holder.setItem(item);
         holder.setLayout();
     }
@@ -63,8 +62,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
             //버튼 클릭 시 SQLite에서 데이터 삭제
             deleteButton.setOnClickListener(new View.OnClickListener() {
-
-
                 @Override
                 public void onClick(View v) {
                     //CheckBox의 String 가져오기
@@ -78,8 +75,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
                 private void deleteToDo(String TODO){
                     //테이블을 삭제하는 sql문 delete...
-                    String deleteSql = "delete from " + NoteDatabase.TABLE_NOTE + " where " + "  TODO = '" + TODO+"'";
-                    NoteDatabase database = NoteDatabase.getInstance(context);
+                    String deleteSql = "delete from " + TodoDatabase.TABLE_Todo + " where " + "  TODO = '" + TODO +"'";
+                    TodoDatabase database = TodoDatabase.getInstance(context);
                     //삭제하는 sql문 실행
                     database.execSQL(deleteSql);
                 }
@@ -88,7 +85,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
         }
         //EditText에서 입력받은 checkBox의 텍스트를 checkBox의 Text에 넣을 수 있게 하는 메서드
-        public void setItem(Note item){
+        public void setItem(TodoData item){
             checkBox.setText(item.getTodo());
         }
 
@@ -99,7 +96,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     }
 
     //배열에 있는 item들을 가리킴
-    public void setItems(ArrayList<Note> items){
+    public void setItems(ArrayList<TodoData> items){
         this.items = items;
     }
 

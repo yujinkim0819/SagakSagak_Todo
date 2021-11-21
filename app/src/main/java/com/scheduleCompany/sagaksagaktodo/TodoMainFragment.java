@@ -1,4 +1,4 @@
-package com.cookandroid.sagaksagaktodo;
+package com.scheduleCompany.sagaksagaktodo;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ public class TodoMainFragment extends Fragment{
     EditText inputToDo;
     Context context;
 
-    public static NoteDatabase noteDatabase = null;
+    public static TodoDatabase todoDatabase = null;
 
     public static TodoMainFragment newInstance(){
         return new TodoMainFragment();
@@ -71,11 +71,10 @@ public class TodoMainFragment extends Fragment{
         String todo = inputToDo.getText().toString();
 
         //테이블에 값을 추가하는 sql구문 insert...
-        String sqlSave = "insert into " + NoteDatabase.TABLE_NOTE + " (TODO) values (" +
-                "'" + todo + "')";
+        String sqlSave = "insert into " + TodoDatabase.TABLE_Todo + " (TODO) values (" + "'" + todo + "')";
 
         //sql문 실행
-        NoteDatabase database = NoteDatabase.getInstance(context);
+        TodoDatabase database = TodoDatabase.getInstance(context);
         database.execSQL(sqlSave);
 
         //저장과 동시에 EditText 안의 글 초기화
@@ -85,26 +84,27 @@ public class TodoMainFragment extends Fragment{
 
     public void openDatabase() {
         // open database
-        if (noteDatabase != null) {
-            noteDatabase.close();
-            noteDatabase = null;
+        if (todoDatabase != null) {
+            todoDatabase.close();
+            todoDatabase = null;
         }
 
-        noteDatabase = NoteDatabase.getInstance(getActivity());
-        boolean isOpen = noteDatabase.open();
+        todoDatabase = TodoDatabase.getInstance(getActivity());
+        boolean isOpen = todoDatabase.open();
         if (isOpen) {
             Log.d(TAG, "Todo database is open.");
         } else {
             Log.d(TAG, "Todo database is not open.");
         }
     }
+
+    //앱 강제 종료(Android Activity 생명주기)
     @Override
     public void onDestroy() {
         super.onDestroy();
-
-        if (noteDatabase != null) {
-            noteDatabase.close();
-            noteDatabase = null;
+        if (todoDatabase != null) {
+            todoDatabase.close();
+            todoDatabase = null;
         }
     }
 

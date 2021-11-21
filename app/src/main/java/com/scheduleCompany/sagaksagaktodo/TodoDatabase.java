@@ -1,4 +1,4 @@
-package com.cookandroid.sagaksagaktodo;
+package com.scheduleCompany.sagaksagaktodo;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -6,12 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class NoteDatabase {
+public class TodoDatabase {
     private static final String TAG = "NoteDatabase";
 
-    private static NoteDatabase database;
+    private static TodoDatabase database;
     public static String DATABASE_NAME = "todo.db";
-    public static String TABLE_NOTE = "NOTE";
+    public static String TABLE_Todo = "TodoData";
     public static int DATABASE_VERSION = 1;
 
     private Context context;
@@ -19,13 +19,13 @@ public class NoteDatabase {
     private DatabaseHelper dbHelper;
 
 
-    private NoteDatabase(Context context){
+    private TodoDatabase(Context context){
         this.context = context;
     }
 
-    public static NoteDatabase getInstance(Context context){
+    public static TodoDatabase getInstance(Context context){
         if(database == null){
-            database = new NoteDatabase(context);
+            database = new TodoDatabase(context);
         }
 
         return database;
@@ -68,7 +68,7 @@ public class NoteDatabase {
 
 
             //테이블초기화
-            String DROP_SQL = "drop table if exists " +TABLE_NOTE;
+            String DROP_SQL = "drop table if exists " +TABLE_Todo;
 
             try {
                 db.execSQL(DROP_SQL);
@@ -78,10 +78,7 @@ public class NoteDatabase {
             }
 
             //테이블 생섣
-            String CREATE_SQL = "create table " + TABLE_NOTE + "("
-                    + " _id integer NOT NULL PRIMARY KEY AUTOINCREMENT, "
-                    + "  TODO TEXT DEFAULT '' "
-                    + ")";
+            String CREATE_SQL = "create table " + TABLE_Todo + "(" + " _id integer NOT NULL PRIMARY KEY AUTOINCREMENT, " + "  TODO TEXT DEFAULT '' " + ")";
             try{
                 db.execSQL(CREATE_SQL);
             } catch (Exception ex){
@@ -89,9 +86,7 @@ public class NoteDatabase {
             }
 
             //테이블의 인덱스 붙이기
-            String CREATE_INDEX_SQL = "create index " + TABLE_NOTE + "_IDX ON " + TABLE_NOTE + "("
-                    + "_id"
-                    + ")";
+            String CREATE_INDEX_SQL = "create index " + TABLE_Todo + "_IDX ON " + TABLE_Todo + "(" + "_id" + ")";
             try{
                 db.execSQL(CREATE_INDEX_SQL);
             } catch (Exception ex){
@@ -108,7 +103,6 @@ public class NoteDatabase {
 
     //데이터베이스 열기
     public boolean open(){
-
         dbHelper = new DatabaseHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
         db = dbHelper.getWritableDatabase();
 
