@@ -1,4 +1,4 @@
-package com.cookandroid.sagaksagaktodo;
+package com.scheduleCompany.sagaksagaktodo;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.scheduleCompany.sagaksagaktodo.R;
 
 public class TimerFragment extends Fragment {
     public static TimerFragment newInstance(){

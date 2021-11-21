@@ -1,10 +1,10 @@
-package com.cookandroid.sagaksagaktodo;
+package com.scheduleCompany.sagaksagaktodo;
 
-public class Note {
+public class TodoData {
     int _id;
     String todo;
 
-    public Note(int _id, String todo){
+    public TodoData(int _id, String todo){
         this._id = _id;
         this.todo = todo;
     }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:labelVisibilityMode="unlabeled"
-    tools:context=".MainActivity"
+    tools:context="com.scheduleCompany.sagaksagaktodo.MainActivity"
     android:orientation="vertical"
     android:backgroundTint="@color/bg_gray">
 

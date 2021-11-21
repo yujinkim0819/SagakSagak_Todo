@@ -1,4 +1,4 @@
-package com.cookandroid.sagaksagaktodo;
+package com.scheduleCompany.sagaksagaktodo;
 
 import org.junit.Test;
 
