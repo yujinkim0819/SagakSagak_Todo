@@ -1,4 +1,4 @@
-package com.cookandroid.sagaksagaktodo;
+package com.scheduleCompany.sagaksagaktodo;
 
 import android.os.Bundle;
 import android.text.Html;
@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.scheduleCompany.sagaksagaktodo.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
